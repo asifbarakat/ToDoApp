@@ -3,18 +3,17 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 // ignore: must_be_immutable
 class ToDoTile extends StatelessWidget {
-
   final bool value;
   final String taskName;
   Function(bool?)? onChanged;
   Function(BuildContext)? deleteFunction;
 
-  ToDoTile({
-    super.key, 
-    required this.value, 
-    required this.taskName, 
-    required this.onChanged, 
-    required this.deleteFunction});
+  ToDoTile(
+      {super.key,
+      required this.value,
+      required this.taskName,
+      required this.onChanged,
+      required this.deleteFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -36,25 +35,35 @@ class ToDoTile extends StatelessWidget {
         ),
         child: Container(
           padding: EdgeInsets.all(24.0),
-          child: Row(
-            children:[
-              //checkbox
-              Checkbox(
-                value: value, 
-                onChanged: onChanged,
-                activeColor: Colors.black,),
-              Text(
-                taskName,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.black,
-                  decoration: value ? TextDecoration.lineThrough : null,
-                ),
-                ),
-            ]
-          ),
+          child: Row(children: [
+            //checkbox
+            Checkbox(
+              value: value,
+              onChanged: onChanged,
+              activeColor: Colors.black,
+            ),
+            Text(
+              taskName,
+              style: TextStyle(
+                fontSize: 16.0,
+                color: Colors.black,
+                decoration: value ? TextDecoration.lineThrough : null,
+              ),
+            ),
+          ]),
           decoration: BoxDecoration(
-            color: Colors.grey[500],
+            gradient: LinearGradient(
+              colors: [Colors.grey, Colors.grey[400]!],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 10,
+                offset: Offset(0, 12),
+              ),
+            ],
             borderRadius: BorderRadius.circular(10),
           ),
         ),
